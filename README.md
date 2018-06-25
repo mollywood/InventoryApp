@@ -15,3 +15,9 @@ This is a collaborative project which aims to create an inventory and online sal
 * JavaScript
 * Node.js
 * PostgreSQL
+* Mustache.js
+* Bcrypt.js
+## Challenges and Solutions
+## Minimum Viable Product
+Admin Auth./Sign In, Admin Site, Tables, Landing/Store Front, User Auth.
+## Our Stretch Goals
