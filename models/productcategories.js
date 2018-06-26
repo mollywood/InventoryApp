@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     productGender: DataTypes.STRING
   }, {});
   productcategories.associate = function(models) {
-    productcategories.hasMany(models.Products, { as : 'Products', foreignKey: 'productCategoriesID'})
+    productcategories.hasMany(models.Products, { as : 'Products', foreignKey: 'productCategoryID'})
   };
   return productcategories;
 };

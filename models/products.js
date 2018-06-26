@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     productQuantity: DataTypes.INTEGER
   }, {});
   Products.associate = function(models) {
-    Products.belongsTo(models.productcategories, { as : 'productcategories', foreginKey: 'productCategoryID'})
+    Products.belongsTo(models.productcategories, { as : 'productcategories', foreignKey: 'productCategoryID'})
   };
   return Products;
 };
