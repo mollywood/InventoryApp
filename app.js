@@ -34,6 +34,7 @@ app.get('/productpage', function(req,res){
 
 
 // INVENTORY MGMT SIDE
+
 // Update Product Categories
 app.get('/updatecategories', function(req,res){
     //models.products.findAll().then(function(products){
@@ -97,6 +98,16 @@ app.get('/stockonhand', function(req,res){
         res.render('stockonhand')
     //})
 })
+
+// get all shopping lists
+app.get('/stockonhand', function(req,res){
+
+    models.shoppingList.findAll().then(function(shoppinglist){
+        // res.json(shoppinglist)
+        res.render('stockonhand', {list: Products})
+    })
+})
+
 
 
 // Contact Us
