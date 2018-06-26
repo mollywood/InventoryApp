@@ -6,7 +6,7 @@
 <body>
 
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper cyan accent-4">
         <a href="#" class="brand-logo">
             <i class="large material-icons prefix">business</i>
             Inventory Management
@@ -23,21 +23,21 @@
 <h1>Contact Us!</h1>
 <div class="container">
     <div class="row">
-        <p>We'd love to hear from you! We welcome your praise and encouragement, as well as your suggestions for improvement.</p>
-        <form>
+        <p class="contact">We'd love to hear from you! We welcome your praise and encouragement, as well as your suggestions for improvement.</p>
+        <form action='/contactus' method='POST'>
             <div class="input-field">
                 <i class="small material-icons prefix">account_circle</i>
-                <input id="contactName" type="text" name="contactName">
+                <input id="contactName" type="text" name="contactName" />
                 <label for="contactName">Name</label>
             </div>
             <div class="input-field">
                 <i class="small material-icons prefix">email</i>
-                <input id="contactEmail" type="email" name="contactEmail">
+                <input id="contactEmail" type="email" name="contactEmail" />
                 <label for="contactEmail">Email</label>
             </div>
             <div class="input-field">
                 <i class="small material-icons prefix">edit</i>
-                <textarea id="contactComment" type="text" name="contactText" placeholder="Thanks for your input!">
+                <textarea id="contactComment" type="text" name="contactComment" placeholder="Thanks for your input!">
                 </textarea>
             </div>
             <button class="btn-large waves-effect waves-light" type="submit" name="action">
@@ -48,7 +48,7 @@
     </div>
 </div>
 
-<footer class="page-footer">
+<footer class="page-footer cyan accent-4">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">

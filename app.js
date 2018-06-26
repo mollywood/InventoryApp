@@ -22,12 +22,6 @@ app.get('/updatecategories', function(req,res){
     //})
 })
 
-app.get('/updateproducts', function(req,res){
-    //models.products.findAll().then(function(products){
-        res.render('updateproducts')
-    //})
-})
-
 app.post('/updatecategories', function(req,res){
 
     const { productCategory , productGender } = req.body
@@ -92,6 +86,28 @@ app.get('/contactus', function(req,res){
         res.render('contactus')
     //})
 })
+
+app.post('/contactus', function(req,res){
+
+    const { contactName, contactEmail, contactComment} = req.body
+    console.log(contactName, contactEmail, contactComment)
+    let thisComment = global.db.ContactUs.build({
+        contactName : contactName,
+        contactEmail : contactEmail,
+        contactComment : contactComment
+    })
+
+    thisComment.save().then(function(savedComment){
+        console.log("Saved successful", savedComment)
+    })
+    res.redirect('/contactus')
+})
+
+models.ContactUs.findOne().then(function(ContactUs){
+    console.log(ContactUs)
+})
+
+
 
 
 
