@@ -4,17 +4,28 @@ const mustacheExpress = require('mustache-express')
 const pg = require('pg')
 const app = express()
 let models = require('./models')
+const bcrypt = require('bcrypt')
+
+var session = require('express-session')
 
 app.engine('mustache',mustacheExpress())
 
 app.set('views','./views')
 app.set('view engine','mustache')
 
-app.use(express.static(__dirname + '/views'))
+app.use(session({
+    secret: "cat",  //random secret hash
+    resave: false,
+    saveUninitialized: false
+}))
+
+app.use(express.static('public'))
 
 app.use(bodyParser.urlencoded({ extended : false }))
 
-// PUBLIC FACING SIDE
+
+// PUBLIC FACING SIDE //
+
 // Product Page
 app.get('/productpage', function(req,res){
     //models.products.findAll().then(function(products){
@@ -23,7 +34,7 @@ app.get('/productpage', function(req,res){
 })
 
 
-// INVENTORY MGMT SIDE
+// INVENTORY MGMT SIDE //
 
 // Display all products
 app.get('/stockonhand', function(req,res){
@@ -126,6 +137,114 @@ app.post('/contactus', function(req,res){
 models.ContactUs.findOne().then(function(ContactUs){
     console.log(ContactUs)
 })
+
+
+// AUTHENTICATION //
+
+// USER
+
+// Sign Up 
+  
+app.get('/signIn', function(req,res){
+      res.render('signin')
+    })
+  
+app.post('/signUp', function(req, res){
+    bcrypt.hash(req.body.password, 10, function(err, hash) {
+        let newUser = {
+          first_name : req.body.first_name,
+          last_name : req.body.last_name,
+          email : req.body.email,
+          address : req.body.address,
+          username : req.body.username,
+          password : hash
+    }
+  
+    models.User.create(newUser).then(function(){
+        res.redirect('/signIn')
+        })
+    })
+})
+  
+// Sign In
+  
+app.post('/signIn',function(req,res,next){
+  
+    models.User.findOne( {where: {username : req.body.usernameSI}}).then(function(user) {
+        bcrypt.compare(req.body.passwordSI, user.password, function(err,result) {
+            if(result) {
+            if(req.session) {
+                req.session.username = req.body.usernameSI
+                var hour = 1800000
+                req.session.cookie.expires = new Date(Date.now() + hour)
+                req.session.cookie.maxAge = hour
+                }
+            res.redirect('/shop')
+            } else {
+            res.redirect('/errorSignIn')
+            }
+        })
+    })
+})
+  
+// Render Sign In Success
+app.get('/shop', function(req,res) {
+    res.render('shop')
+})
+  
+// Sign Out
+app.post('/logOut', function(req, res){
+    req.session.destroy()
+    res.clearCookie('connect.sid', {path : '/'});
+    res.redirect('/signin')
+})
+  
+// Render Sign In Error
+app.get('/errorSignIn', function(req,res) {
+    res.render('errorSignIn')
+})
+  
+  // ADMIN //
+  
+  //SIGN UP//
+  
+app.get('/admin', function(req,res){
+    res.render('admin')
+})
+  
+app.post('/adminSignUp', function(req, res){
+    bcrypt.hash(req.body.adminPassword, 10, function(err, hash) {
+        let newAdmin = {
+            username : req.body.adminUsername,
+            password : hash
+        }
+  
+    models.Admin.create(newAdmin).then(function(){
+        res.redirect('/admin')
+        })
+    })
+})
+  
+// Sign in
+app.post('/adminSignIn',function(req,res,next){
+  
+    models.Admin.findOne({username : req.body.adminUsernameSI}).then(function(user) {
+        bcrypt.compare(req.body.adminPasswordSI, user.password, function(err,result) {
+            if(result) {
+                res.redirect('/shop')
+            } else {
+                res.redirect('/errorSignIn')
+            }
+        })
+    })
+})
+
+// SIGN OUT //
+// app.post('/logOut', function(req, res){
+//   req.session.destroy()
+//   res.clearCookie('connect.sid', {path : '/'});
+//   res.redirect('/signin')
+// })
 
 
 
