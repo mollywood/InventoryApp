@@ -14,7 +14,16 @@ app.use(express.static(__dirname + '/views'))
 
 app.use(bodyParser.urlencoded({ extended : false }))
 
+// PUBLIC FACING SIDE
+// Product Page
+app.get('/productpage', function(req,res){
+    //models.products.findAll().then(function(products){
+        res.render('productpage')
+    //})
+})
 
+
+// INVENTORY MGMT SIDE
 // Update Product Categories
 app.get('/updatecategories', function(req,res){
     //models.products.findAll().then(function(products){
