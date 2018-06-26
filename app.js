@@ -12,7 +12,9 @@ app.set('view engine','mustache')
 
 app.use(express.static(__dirname + '/views'))
 
-
+app.get('/', function(req, res) {
+  res.render("")
+})
 
 
 
