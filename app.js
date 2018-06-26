@@ -24,6 +24,17 @@ app.get('/productpage', function(req,res){
 
 
 // INVENTORY MGMT SIDE
+
+// Display all products
+app.get('/stockonhand', function(req,res){
+
+    models.Products.findAll().then(function(Products){
+        // res.json(shoppinglist)
+        res.render('stockonhand', {list: Products})
+    })
+})
+
+
 // Update Product Categories
 app.get('/updatecategories', function(req,res){
     //models.products.findAll().then(function(products){
