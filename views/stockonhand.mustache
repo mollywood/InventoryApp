@@ -23,8 +23,30 @@
 <h1>Stock On Hand</h1>
 <div class="container">
     <div class="row">
-
-
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Category</th>
+                    <th>Product Name</th>
+                    <th>Product Size</th>
+                    <th>Product Price</th>
+                    <th>Product Color</th>
+                    <th>Product Quantity</th>
+                </tr>
+            <thead>
+            <tbody>
+                {{#list}}
+                    <tr>
+                        <td>Product Category</td>
+                        <td>{{productName}}</td>
+                        <td>{{productSize}}</td>
+                        <td>{{productPrice}}</td>
+                        <td>{{productColor}}</td>
+                        <td>{{productQuantity}}</td>
+                    </tr>
+                {{/list}}
+            </tbody>
+        </table>
     </div>
 </div>
 
