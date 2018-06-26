@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended : false }))
 // PUBLIC FACING SIDE
 // Product Page
 app.get('/productpage', function(req,res){
-    //models.products.findAll().then(function(products){
+    //db.models.products.findAll().then(function(products){
         res.render('productpage')
     //})
 })
