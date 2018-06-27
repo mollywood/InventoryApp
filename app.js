@@ -33,8 +33,20 @@ app.get('/productpage', function(req,res){
     //})
 })
 
+app.get('/productpage', function(req,res){
+
+    models.Products.findAll().then(function(products){
+        res.render('productpage', {list: products})
+    })
+})
+
 
 // INVENTORY MGMT SIDE
+
+// Admin Landing
+app.get('/adminlanding', function(req,res){
+    res.render('adminlanding')
+})
 
 // Update Product Categories
 app.get('/updatecategories', function(req,res){

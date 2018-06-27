@@ -1,15 +1,15 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="public/adminstyles.css">
 </head>
 <body>
 
 <nav>
     <div class="nav-wrapper cyan accent-4">
-        <a href="#" class="brand-logo">
+        <a href="/adminlanding" class="brand-logo">
             <i class="large material-icons prefix">business</i>
-            Inventory Management
+            Ledgr
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li class="active"><a href="/updatecategories">Update Product Categories</a></li>
@@ -25,18 +25,25 @@
     <div class="row">
         <form action="/updatecategories" method='POST'>
             <div class="input-field">
-                <i class="small material-icons prefix">accessibility</i>
+                <i class="small material-icons prefix">wc</i>
                 <input id="productCategory" type="text" name="productCategory" />
                 <label for="productCategory">Product Category</label>
             </div>
+       
             <div class="input-field">
-                <i class="small material-icons prefix">wc</i>
-                <select id="productGender" name="productGender">
-                <label for="productGender" type="text" name="productGender">Men/Women/Kids/Unisex</label>
+                <select class="browser-default" id="productGender" name="productGender">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="Men">Men's</option>
+                    <option value="Women">Women's</option>
+                    <option value="Kid">Kid's</option>
+                    <option value="Unisex">Unisex</option>
+                </select>
             </div>
+
             <button class="btn-large waves-effect waves-light" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
             </button>
+
         </form>
     </div>
 </div>
@@ -68,4 +75,5 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script src="layout.js"></script>
 </body>
