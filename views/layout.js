@@ -19,4 +19,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var instance = M.FloatingActionButton.getInstance(elem);
 
-
+  M.toast({html: 'Added to cart!'})

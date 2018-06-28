@@ -20,33 +20,34 @@
     </div>
 </nav>
 
-<h1>Update Your Categories</h1>
 <div class="container">
+  <h1>Update Your Categories</h1>
     <div class="row">
         <form action="/updatecategories" method='POST'>
             <div class="input-field">
-                <i class="small material-icons prefix">wc</i>
-                <input id="productCategory" type="text" name="productCategory" />
-                <label for="productCategory">Product Category</label>
+                  <select class="browser-default" name="productCategory">
+                    <option value="" disabled selected>Product Category</option>
+                    <option value="T-Shirt">T-Shirt</option>
+                    <option value="Jeans">Jeans</option>
+                    <option value="Accessories">Accessories</option>
+                  </select>
             </div>
-       
             <div class="input-field">
-                <select class="browser-default" id="productGender" name="productGender">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="Men">Men's</option>
-                    <option value="Women">Women's</option>
-                    <option value="Kid">Kid's</option>
-                    <option value="Unisex">Unisex</option>
-                </select>
+                <div class="input-field">
+                      <select class="browser-default" name="productGender">
+                        <option value="" disabled selected>Product Gender</option>
+                        <option value="Men's">Men's</option>
+                        <option value="Women's">Women's</option>
+                        <option value="Children's">Children's</option>
+                      </select>
             </div>
-
             <button class="btn-large waves-effect waves-light" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
             </button>
-
         </form>
     </div>
 </div>
+
 
 <footer class="page-footer cyan accent-4">
     <div class="container">

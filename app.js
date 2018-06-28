@@ -28,12 +28,6 @@ app.use(bodyParser.urlencoded({ extended : false }))
 
 // Product Page
 app.get('/productpage', function(req,res){
-    //db.models.products.findAll().then(function(products){
-        res.render('productpage')
-    //})
-})
-
-app.get('/productpage', function(req,res){
 
     models.Products.findAll().then(function(products){
         res.render('productpage', {list: products})
