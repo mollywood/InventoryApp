@@ -11,3 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var options = { height: 400 }
     var instances = M.Slider.init(elems, options);
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
